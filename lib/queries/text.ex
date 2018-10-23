@@ -44,12 +44,14 @@ defmodule PageObject.Queries.Text do
         def unquote(name)() do
           find_element(:css, unquote(css_selector))
           |> inner_text
+          |> String.trim
         end
       else
         def unquote(name)(el) do
           el
           |> find_within_element(:css, unquote(css_selector))
           |> inner_text
+          |> String.trim
         end
       end
     end
